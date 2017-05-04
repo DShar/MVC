@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title= "Deleting";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="col-md-4">
+        <div class="alert alert-warning">
+            <p>You are going to delete employee # @ViewBag.EmployeeId</p>
+            @using (Html.BeginForm())
+            {
+                <input type="submit" value="Удалить" />
+            }
+        </div>
+    </div>
+</body>
+</html>

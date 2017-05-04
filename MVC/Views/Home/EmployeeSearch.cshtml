@@ -1,0 +1,11 @@
+﻿@model IEnumerable<MVC.Models.Employee>
+
+<div id="searchresults">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.LastName @item.FirstName @item.MiddleName @item.YearOfBirth @item.Gender</li>
+        }
+    </ul>
+</div>
+

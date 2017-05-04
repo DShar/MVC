@@ -1,0 +1,47 @@
+﻿@model MVC.Models.Employee
+
+@{
+    ViewBag.Title = "Добавление сотрудника";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добавление Сотрудника</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        
+        <p>
+            Фамилия <br />
+            @Html.EditorFor(model => model.LastName)
+        </p>
+        <p>
+            Имя <br />
+            @Html.EditorFor(model => model.FirstName)
+        </p>
+
+        <p>
+            Отчество  <br />
+            @Html.EditorFor(model => model.MiddleName)
+        </p>
+        <p>
+            Год рождения <br />
+            @Html.EditorFor(model => model.YearOfBirth)
+        </p>
+        <p>
+            Пол <br />
+            @Html.DropDownListFor(model => model.Gender, ViewBag.Gender as SelectList)
+        </p>
+        <p>
+            Департамент <br />
+            @Html.DropDownListFor(model => model.Departmentid, ViewBag.Departments as SelectList)
+        </p>
+
+        <p>
+            <input type="submit" value="Добавить сотрудника" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("К списку сотрудников", "EmployeesList")
+</div>

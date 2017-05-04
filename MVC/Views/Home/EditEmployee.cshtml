@@ -1,0 +1,47 @@
+﻿@model MVC.Models.Employee
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Edit Employee";
+}
+
+<h2>Сотрудник № @Model.id</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+              
+        <p>
+            @Html.LabelFor(model => model.LastName, "Фамилия")
+            <br />
+            @Html.EditorFor(model => model.LastName)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.FirstName, "Имя")
+            <br />
+            @Html.EditorFor(model => model.FirstName)
+
+        </p>
+        <p>
+            @Html.LabelFor(model => model.MiddleName, "Отчество")
+            <br />
+            @Html.EditorFor(model => model.MiddleName)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.YearOfBirth, "Год рождения")
+            <br />
+            @Html.EditorFor(model => model.YearOfBirth)
+        </p>
+        <p>
+            Пол
+            <br />
+            @Html.EditorFor(model => model.Gender)
+        </p>
+        <p>
+            Департамент
+            <br />
+            @Html.DropDownListFor(model => model.Departmentid, ViewBag.Departments as SelectList)
+        </p>
+        <p><input type="submit" value="Отправить" /></p>
+    </fieldset>
+}
+

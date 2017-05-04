@@ -1,0 +1,91 @@
+﻿@*@model MVC.Models.Employee
+<h3>Список сотрудников</h3>
+@Html.DisplayForModel()*
+
+    <table class="table table-bordered table-hover">
+        <tbody>
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Год рождения</th>
+                <th>Пол</th>
+                <th>Департамент</th>
+            </tr>
+
+
+            @foreach (var emp in ViewBag.employees)
+            {
+                <tr>
+                    <td><p>@emp.LastName</p></td>
+                    <td><p>@emp.FirstName</p></td>
+                    <td><p>@emp.MiddleName</p></td>
+                    <td><p>@emp.YearOfBirth<p></td>
+                    <td><p>@emp.Gender</p></td>
+                    <td><p>@emp.Department</p></td>
+                <td><a href="Home/EditEmployee/@emp.id">Редактировать</a></td>
+                <td><a href="Home/Delete/@emp.id">Удалить</a></td>
+            </tr>
+
+            }
+        </tbody>
+    </table>*@
+
+@model IEnumerable<MVC.Models.Employee>
+@{
+    ViewBag.Title = "Список сотрудников";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <h2>Список сотрудников</h2>
+    @*<p>
+            @Html.ActionLink("Добавить игрока", "Create")
+        </p>*@
+    <table>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Год рождения</th>
+            <th>Пол</th>
+            <th>Департамент</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "EditEmployee", new { id = item.id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </table>
+    @*<p>
+        @Html.ActionLink("Каталог команд", "ListTeams")
+    </p>*@
+
+</body>
+</html>
